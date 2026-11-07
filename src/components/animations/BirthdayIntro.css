@@ -1,0 +1,198 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap');
+
+.birthday-intro {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 20%, #ff00cc 0%, transparent 35%),
+    radial-gradient(circle at 80% 80%, #7000ff 0%, transparent 40%),
+    linear-gradient(135deg, #090014, #19002e, #050014);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Background glow */
+
+.birthday-intro::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: #ff00cc;
+  filter: blur(150px);
+  opacity: 0.25;
+  border-radius: 50%;
+  top: -200px;
+  left: -150px;
+  animation: glowMove 8s infinite alternate;
+}
+
+.birthday-intro::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: #7000ff;
+  filter: blur(150px);
+  opacity: 0.3;
+  border-radius: 50%;
+  bottom: -200px;
+  right: -150px;
+  animation: glowMove 8s infinite alternate-reverse;
+}
+
+/* Main content */
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+/* Introduction label */
+
+.intro-tag {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 5px;
+  font-weight: 600;
+  color: #ffd700;
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  padding: 12px 25px;
+  border-radius: 50px;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+/* Birthday heading */
+
+.intro-content h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(45px, 9vw, 110px);
+  font-weight: 900;
+  line-height: 1.15;
+  margin: 0;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 20px rgba(255, 0, 204, 0.5),
+    0 0 50px rgba(112, 0, 255, 0.4);
+}
+
+/* Mum's name */
+
+.intro-content h1 span {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    #ff00cc,
+    #ffd700,
+    #ff66cc,
+    #7000ff
+  );
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientMove 5s linear infinite;
+  filter: drop-shadow(0 0 15px rgba(255, 79, 163, 0.6));
+}
+
+/* Description */
+
+.intro-content p {
+  font-size: 17px;
+  color: #d8c9e8;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+/* Surprise button */
+
+.intro-content button {
+  padding: 18px 40px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #ff00cc, #7000ff);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow:
+    0 0 20px rgba(255, 0, 204, 0.5),
+    0 0 40px rgba(112, 0, 255, 0.3);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.intro-content button:hover {
+  box-shadow:
+    0 0 30px rgba(255, 0, 204, 0.8),
+    0 0 60px rgba(112, 0, 255, 0.6);
+  transform: translateY(-3px);
+}
+
+/* Animations */
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+@keyframes glowMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(150px, 100px);
+  }
+}
+
+/* Mobile responsiveness */
+
+@media (max-width: 600px) {
+  .birthday-intro {
+    padding: 20px;
+  }
+
+  .intro-tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  .intro-content h1 {
+    font-size: clamp(38px, 11vw, 65px);
+  }
+
+  .intro-content p {
+    font-size: 14px;
+  }
+
+  .intro-content button {
+    padding: 16px 28px;
+    font-size: 12px;
+  }
+}
+
+/* Accessibility: reduce motion when requested */
+
+@media (prefers-reduced-motion: reduce) {
+  .birthday-intro::before,
+  .birthday-intro::after,
+  .intro-content h1 span {
+    animation: none;
+  }
+}
